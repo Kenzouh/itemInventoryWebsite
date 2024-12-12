@@ -1,9 +1,9 @@
 // Seeder = Test or Dummy data for ADDING
 
 const mongoose = require('mongoose');
-const User = require('../models/user');
+const Item = require('../models/item');
                             // localhost:port/name of database
-mongoose.connect('mongodb://127.0.0.1:27017/user-db') // Connection of database
+mongoose.connect('mongodb://127.0.0.1:27017/item-db') // Connection of database
     .then(() => {
         console.log("Connection open");
     })
@@ -15,12 +15,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/user-db') // Connection of database
 // instance of the data
 const seedDb = async() => {
 
-    // await User.deleteMany({}); // For  deleting everything for a fresh DB
-    const users = new User({
-        name: 'Eijey Tamayo',
-        emailAddress: 'testemail@email.com'
+    // await Item.deleteMany({}); // For  deleting everything for a fresh DB
+    const items = new Item({
+        name: 'Shovel',
+        category: 'Grass Lands',
+        quantity: 4,
+        price: 800,
+        description: "for digging.",
+        createdAt: new Date()
     })
-    await users.save();
+    await items.save();
 
     // insertMany is also okay
 }
